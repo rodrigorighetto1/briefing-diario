@@ -180,7 +180,7 @@ def deduplicar(noticias: list) -> list:
 
 def gerar_resumo_claude(noticias: list) -> str:
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Gerando resumo com Claude...")
-    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", "").replace('"', '').replace("'", "").strip())
+    print(f"DEBUG KEY: '{os.environ.get('ANTHROPIC_API_KEY', 'NAO_ENCONTRADA')[:20]}'")       client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", "").replace('"', '').replace("'", "").strip())
     by_cat = {
         "geopolitica": [], "politica": [], "economia": [],
         "brasil": [], "cripto": [], "mercados": [], "geral": []

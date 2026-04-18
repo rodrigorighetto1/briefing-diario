@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "").strip().strip('"').strip("'")
 EMAIL_DESTINO     = os.getenv("EMAIL_DESTINO")
 EMAIL_REMETENTE   = os.getenv("EMAIL_REMETENTE")
 GMAIL_SMTP_SENHA  = os.getenv("GMAIL_SMTP_SENHA")

@@ -1,0 +1,6 @@
+.env
+token_gmail.json
+credentials_gmail.json
+noticias_cache.json
+*.html
+__pycache__/

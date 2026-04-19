@@ -1,6 +1,6 @@
 import feedparser
 import anthropic
-import smtplib
+import requests
 import json
 import os
 import re

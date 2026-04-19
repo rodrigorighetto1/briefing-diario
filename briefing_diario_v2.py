@@ -45,7 +45,7 @@ def carregar_cache():
     if CACHE_FILE.exists():
         try:
             data = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
-            cutoff = (datetime.now() - timedelta(days=3)).isoformat()
+            cutoff = datetime.now().isoformat()
             return {k for k, v in data.items() if v > cutoff}
         except Exception:
             return set()

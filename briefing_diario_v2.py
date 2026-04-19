@@ -1,4 +1,4 @@
-import feedparser
+himport feedparser
 import anthropic
 import requests
 import json
@@ -207,7 +207,7 @@ def enviar_email(html_content, num_noticias):
         "https://api.resend.com/emails",
         headers={"Authorization": f"Bearer {RESEND_API_KEY}", "Content-Type": "application/json"},
         json={
-            "from": "Briefing Diario <onboarding@resend.dev>",,
+            "from": "Briefing Diario <onboarding@resend.dev>",
             "to": [EMAIL_DESTINO],
             "subject": f"Briefing Diario - {datetime.now().strftime('%d/%m/%Y')}",
             "html": html_completo

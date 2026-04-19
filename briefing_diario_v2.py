@@ -1,4 +1,4 @@
-himport feedparser
+import feedparser
 import anthropic
 import requests
 import json
@@ -10,8 +10,7 @@ from pathlib import Path
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 EMAIL_DESTINO     = os.environ.get("EMAIL_DESTINO", "").strip()
-EMAIL_REMETENTE   = os.environ.get("EMAIL_REMETENTE", "").strip()
-if True:BREVO_API_KEY     = "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"
+RESEND_API_KEY    = os.environ.get("RESEND_API_KEY", "").strip()
 
 BASE_DIR   = Path(__file__).parent
 CACHE_FILE = BASE_DIR / "noticias_cache.json"
@@ -45,7 +44,7 @@ def carregar_cache():
     if CACHE_FILE.exists():
         try:
             data = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
-            cutoff = datetime.now().isoformat()
+            cutoff = (datetime.now() - timedelta(days=3)).isoformat()
             return {k for k, v in data.items() if v > cutoff}
         except Exception:
             return set()
@@ -97,7 +96,6 @@ def buscar_noticias():
                 cache.add(h)
         except Exception as e:
             print(f"  [ERRO] {feed_cfg['nome']}: {e}")
-    salvar_cache(cache)
     print(f"  -> {len(todas)} noticias novas coletadas")
     return todas
 
@@ -214,7 +212,7 @@ def enviar_email(html_content, num_noticias):
         }
     )
     if response.status_code not in [200, 201]:
-        raise Exception(f"Brevo erro: {response.text}")
+        raise Exception(f"Resend erro: {response.text}")
     print(f"  -> Email enviado para {EMAIL_DESTINO}")
 
 def main():

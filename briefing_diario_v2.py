@@ -72,7 +72,7 @@ def limpar_html(texto):
 
 def buscar_noticias():
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Buscando feeds RSS...")
-    cache = carregar_cache()
+    cache = set()
     todas = []
     ontem = datetime.now() - timedelta(hours=30)
     for feed_cfg in RSS_FEEDS:

@@ -228,7 +228,8 @@ def enviar_email(html_content, num_noticias):
     msg.attach(MIMEText(html_completo, "html", "utf-8"))
 
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
-        server.starttls()\n        server.login(EMAIL_REMETENTE, smtp_senha)
+        server.starttls()
+        server.login(EMAIL_REMETENTE, smtp_senha)
         server.sendmail(EMAIL_REMETENTE, EMAIL_DESTINO, msg.as_string())
 
     print(f"  -> Email enviado para {EMAIL_DESTINO}")

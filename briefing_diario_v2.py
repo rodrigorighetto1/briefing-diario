@@ -6,32 +6,30 @@ import os
 import re
 import hashlib
 from datetime import datetime, timedelta
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from pathlib import Path
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-EMAIL_DESTINO     = os.environ.get("EMAIL_DESTINO", "")
-EMAIL_REMETENTE   = os.environ.get("EMAIL_REMETENTE", "")
-GMAIL_SMTP_SENHA  = os.environ.get("GMAIL_SMTP_SENHA", "")
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+EMAIL_DESTINO     = os.environ.get("EMAIL_DESTINO", "").strip()
+EMAIL_REMETENTE   = os.environ.get("EMAIL_REMETENTE", "").strip()
+BREVO_API_KEY     = os.environ.get("BREVO_API_KEY", "").strip()
 
 BASE_DIR   = Path(__file__).parent
 CACHE_FILE = BASE_DIR / "noticias_cache.json"
 
 RSS_FEEDS = [
-    {"nome": "UOL",        "url": "https://rss.uol.com.br/feed/noticias.xml",                      "cat": ["politica", "brasil"]},
-    {"nome": "UOL Econ",   "url": "https://rss.uol.com.br/feed/economia.xml",                      "cat": ["economia", "brasil"]},
-    {"nome": "Estadao",    "url": "https://feeds.estadao.com.br/rss/rss2.0/economia.xml",           "cat": ["economia", "brasil"]},
-    {"nome": "Estadao Pol","url": "https://feeds.estadao.com.br/rss/rss2.0/politica.xml",           "cat": ["politica", "brasil"]},
-    {"nome": "Folha",      "url": "https://feeds.folha.uol.com.br/folha/dinheiro/rss091.xml",       "cat": ["economia", "brasil"]},
-    {"nome": "Folha Pol",  "url": "https://feeds.folha.uol.com.br/folha/brasil/rss091.xml",         "cat": ["politica", "brasil"]},
-    {"nome": "WSJ",        "url": "https://feeds.a.dj.com/rss/RSSWorldNews.xml",                   "cat": ["geopolitica", "economia"]},
-    {"nome": "WSJ Mkt",    "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",                 "cat": ["mercados"]},
-    {"nome": "Investing",  "url": "https://br.investing.com/rss/news_288.rss",                     "cat": ["mercados", "economia"]},
-    {"nome": "Inv Cripto", "url": "https://br.investing.com/rss/news_301.rss",                     "cat": ["cripto"]},
-    {"nome": "Bloomberg",  "url": "https://feeds.bloomberg.com/markets/news.rss",                  "cat": ["mercados", "economia"]},
-    {"nome": "InfoMoney",  "url": "https://www.infomoney.com.br/feed/",                            "cat": ["mercados", "brasil", "cripto"]},
-    {"nome": "InfoM Cri",  "url": "https://www.infomoney.com.br/mercados/criptomoedas/feed/",      "cat": ["cripto"]},
+    {"nome": "UOL",        "url": "https://rss.uol.com.br/feed/noticias.xml",                 "cat": ["politica", "brasil"]},
+    {"nome": "UOL Econ",   "url": "https://rss.uol.com.br/feed/economia.xml",                 "cat": ["economia", "brasil"]},
+    {"nome": "Estadao",    "url": "https://feeds.estadao.com.br/rss/rss2.0/economia.xml",      "cat": ["economia", "brasil"]},
+    {"nome": "Estadao Pol","url": "https://feeds.estadao.com.br/rss/rss2.0/politica.xml",      "cat": ["politica", "brasil"]},
+    {"nome": "Folha",      "url": "https://feeds.folha.uol.com.br/folha/dinheiro/rss091.xml",  "cat": ["economia", "brasil"]},
+    {"nome": "Folha Pol",  "url": "https://feeds.folha.uol.com.br/folha/brasil/rss091.xml",    "cat": ["politica", "brasil"]},
+    {"nome": "WSJ",        "url": "https://feeds.a.dj.com/rss/RSSWorldNews.xml",              "cat": ["geopolitica", "economia"]},
+    {"nome": "WSJ Mkt",    "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",            "cat": ["mercados"]},
+    {"nome": "Investing",  "url": "https://br.investing.com/rss/news_288.rss",                "cat": ["mercados", "economia"]},
+    {"nome": "Inv Cripto", "url": "https://br.investing.com/rss/news_301.rss",                "cat": ["cripto"]},
+    {"nome": "Bloomberg",  "url": "https://feeds.bloomberg.com/markets/news.rss",             "cat": ["mercados", "economia"]},
+    {"nome": "InfoMoney",  "url": "https://www.infomoney.com.br/feed/",                       "cat": ["mercados", "brasil", "cripto"]},
+    {"nome": "InfoM Cri",  "url": "https://www.infomoney.com.br/mercados/criptomoedas/feed/", "cat": ["cripto"]},
 ]
 
 KEYWORDS = {
@@ -142,12 +140,7 @@ def deduplicar(noticias):
 
 def gerar_resumo_claude(noticias):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Gerando resumo com Claude...")
-    
-    api_key = ANTHROPIC_API_KEY.strip().strip('"').strip("'")
-    print(f"API key primeiros chars: {api_key[:10]}")
-    
-    client = anthropic.Anthropic(api_key=api_key)
-    
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     by_cat = {"geopolitica": [], "politica": [], "economia": [], "brasil": [], "cripto": [], "mercados": [], "geral": []}
     for n in noticias:
         colocado = False
@@ -158,30 +151,25 @@ def gerar_resumo_claude(noticias):
                 break
         if not colocado:
             by_cat["geral"].append(n)
-    
     noticias_json = json.dumps(
         {cat: [{"titulo": n["titulo"], "resumo": n["resumo"], "fontes": n.get("fontes", [n["fonte"]]), "link": n["link"]} for n in items[:8]]
          for cat, items in by_cat.items() if items},
         ensure_ascii=False, indent=2
     )
-    
     data_hoje = datetime.now().strftime("%d de %B de %Y")
     prompt = f"""Voce e um analista financeiro e jornalista especializado em mercados globais.
 Hoje e {data_hoje}.
 
-Abaixo estao noticias ja pre-agrupadas por assunto de multiplas fontes.
-
-Crie um BRIEFING DIARIO completo em HTML para email.
+Crie um BRIEFING DIARIO completo em HTML para email com as noticias abaixo.
 
 REGRAS:
 1. Cada assunto aparece UMA SO VEZ
-2. Para cada noticia, escreva UM paragrafo de 3-5 linhas combinando informacoes complementares de cada fonte
-3. Cite todas as fontes ao final: [Bloomberg, WSJ, InfoMoney]
+2. Paragrafo de 3-5 linhas por noticia combinando informacoes complementares
+3. Cite todas as fontes ao final: [Bloomberg, WSJ]
 4. Destaque implicacoes para investidores brasileiros
 5. Adicione secao Conexoes Macro ao final
 
-FORMATO HTML para email (tabelas, sem CSS externo):
-- Fundo #ffffff, titulos #1a1a2e, texto #333333
+HTML para email (tabelas, sem CSS externo, fundo #ffffff, titulos #1a1a2e, texto #333333)
 
 Noticias:
 {noticias_json}
@@ -198,8 +186,6 @@ Retorne APENAS o HTML do corpo (sem DOCTYPE, html, head ou body).
 def enviar_email(html_content, num_noticias):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Enviando email...")
     data_str = datetime.now().strftime("%d/%m/%Y")
-    smtp_senha = GMAIL_SMTP_SENHA.strip().strip('"').strip("'")
-    
     html_completo = f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f4f4f4;font-family:Georgia,serif;">
@@ -208,30 +194,27 @@ def enviar_email(html_content, num_noticias):
 <table width="660" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;">
 <tr><td style="background:#1a1a2e;padding:28px 32px;">
   <div style="font-size:11px;color:#7a8bb0;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">Briefing Diario</div>
-  <div style="font-size:24px;font-weight:bold;color:#ffffff;">Resumo de Mercados & Noticias</div>
+  <div style="font-size:24px;font-weight:bold;color:#ffffff;">Resumo de Mercados e Noticias</div>
   <div style="font-size:13px;color:#8892b0;margin-top:6px;">{data_str} - {num_noticias} topicos analisados</div>
 </td></tr>
 <tr><td style="padding:28px 32px;">{html_content}</td></tr>
 <tr><td style="background:#f8f9fa;border-top:1px solid #e9ecef;padding:16px 32px;">
-  <div style="font-size:11px;color:#999999;">
-    Gerado em {datetime.now().strftime("%d/%m/%Y as %H:%M")} BRT<br>
-    Fontes: UOL, Estadao, Folha, WSJ, Bloomberg, Investing.com, InfoMoney
-  </div>
+  <div style="font-size:11px;color:#999999;">Gerado em {datetime.now().strftime("%d/%m/%Y as %H:%M")} BRT</div>
 </td></tr>
 </table></td></tr></table>
 </body></html>"""
-
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Briefing Diario - {datetime.now().strftime('%d/%m/%Y')}"
-    msg["From"]    = EMAIL_REMETENTE
-    msg["To"]      = EMAIL_DESTINO
-    msg.attach(MIMEText(html_completo, "html", "utf-8"))
-
-    if True:
-        server.starttls()
-        server.login(EMAIL_REMETENTE, smtp_senha)
-        server.sendmail(EMAIL_REMETENTE, EMAIL_DESTINO, msg.as_string())
-
+    response = requests.post(
+        "https://api.brevo.com/v3/smtp/email",
+        headers={"api-key": BREVO_API_KEY, "Content-Type": "application/json"},
+        json={
+            "sender": {"name": "Briefing Diario", "email": EMAIL_REMETENTE},
+            "to": [{"email": EMAIL_DESTINO}],
+            "subject": f"Briefing Diario - {datetime.now().strftime('%d/%m/%Y')}",
+            "htmlContent": html_completo
+        }
+    )
+    if response.status_code not in [200, 201]:
+        raise Exception(f"Brevo erro: {response.text}")
     print(f"  -> Email enviado para {EMAIL_DESTINO}")
 
 def main():

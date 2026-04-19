@@ -204,13 +204,13 @@ def enviar_email(html_content, num_noticias):
 </table></td></tr></table>
 </body></html>"""
     response = requests.post(
-        "https://api.brevo.com/v3/smtp/email",
-        headers={"api-key": BREVO_API_KEY, "Content-Type": "application/json"},
+        "https://api.resend.com/emails",
+        headers={"Authorization": f"Bearer {RESEND_API_KEY}", "Content-Type": "application/json"},
         json={
-            "sender": {"name": "Briefing Diario", "email": EMAIL_REMETENTE},
-            "to": [{"email": EMAIL_DESTINO}],
+            "from": "Briefing Diario <onboarding@resend.dev>",,
+            "to": [EMAIL_DESTINO],
             "subject": f"Briefing Diario - {datetime.now().strftime('%d/%m/%Y')}",
-            "htmlContent": html_completo
+            "html": html_completo
         }
     )
     if response.status_code not in [200, 201]:

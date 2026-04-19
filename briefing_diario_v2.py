@@ -11,7 +11,7 @@ from pathlib import Path
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 EMAIL_DESTINO     = os.environ.get("EMAIL_DESTINO", "").strip()
 EMAIL_REMETENTE   = os.environ.get("EMAIL_REMETENTE", "").strip()
-BREVO_API_KEY     = os.environ.get("BREVO_API_KEY", "").strip()
+if True:BREVO_API_KEY     = "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"
 
 BASE_DIR   = Path(__file__).parent
 CACHE_FILE = BASE_DIR / "noticias_cache.json"

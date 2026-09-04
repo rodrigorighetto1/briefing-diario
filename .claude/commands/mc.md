@@ -1,5 +1,5 @@
 ---
-description: Roda o Morning Call (protocolo de mercado, fluxo geral)
+description: Roda o MC (resumo factual do fechamento do dia anterior, sem leitura do dia atual)
 ---
 
-Execute a skill `protocolo` (fluxo Geral) agora, exatamente como se eu tivesse escrito "rode o protocolo".
+Execute a skill `mc` agora, exatamente como se eu tivesse escrito "rode o mc".

@@ -45,7 +45,7 @@ Foco: leitura do dia **atual** — as notícias mais relevantes de hoje e o impa
 
 ## Fluxo MC — Morning Call (comando: "rode o mc" / "/mc")
 
-Cobertura: o mesmo escopo do Fluxo Geral (bolsas mundiais, juros e política monetária, câmbio) — mas olhando só para trás.
+Cobertura: fechamento da **última sessão** das principais moedas (USD/BRL, EUR/BRL, JPY/BRL, USD/JPY), da bolsa brasileira (Ibovespa) e dos principais índices globais (S&P 500, Dow Jones, Nasdaq, um índice europeu de referência, Nikkei 225, Hang Seng, CSI300/Xangai), com nível/pontos e variação percentual — nunca só a direção sem o número.
 
 Foco: resumo denso e factual de como fechou o pregão **anterior** e quais foram as notícias mais relevantes desse pregão. Sem interpretação do dia atual, sem leitura de impacto — é retrato do que já aconteceu, buscado nesta execução (nunca reciclado de conversa passada).
 

@@ -1,6 +1,6 @@
 ---
 name: mc
-description: Resumo factual do fechamento do dia anterior (bolsas, juros, câmbio), sem leitura do dia atual
+description: Resumo factual do fechamento da última sessão — principais moedas, bolsa (Ibovespa) e índices globais —, sem leitura do dia atual
 ---
 
 # MC — Resumo do dia anterior
@@ -38,7 +38,13 @@ Resumo denso e factual de como fecharam os principais mercados e quais foram as 
 - **Ásia (Nikkei, Hang Seng, CSI300/Xangai etc.):** dependendo do horário em que o comando for rodado, o pregão asiático do dia pode estar em andamento. Nesse caso, puxe o comportamento em tempo real (variação até agora, não um fechamento) e deixe explícito no texto que o pregão segue aberto — nunca trate como "fechamento" um pregão que ainda não fechou.
 - **Ibovespa:** normalmente o fechamento do dia anterior, salvo se o comando for rodado durante o próprio pregão.
 
-Cubra: bolsas (EUA, Europa, Ásia, Ibovespa), juros e política monetária (Fed, BCE, BoJ, Copom), câmbio. Regra inviolável: nunca invente cotação, nível técnico, fala de dirigente ou número. Sem confirmação, diga que não confirmou.
+Cubra, sempre com **nível de fechamento (pontos) e variação percentual** — nunca só a direção ("subiu"/"caiu") sem o número:
+- **Moedas:** USD/BRL, EUR/BRL, JPY/BRL, USD/JPY (regras de casas decimais do Passo 1).
+- **Bolsa (Brasil):** Ibovespa.
+- **Índices globais:** S&P 500, Dow Jones e Nasdaq (EUA); um índice europeu de referência citado pela fonte (Euro Stoxx 600, DAX ou FTSE 100); Nikkei 225, Hang Seng e CSI300/Xangai (Ásia — sinalizando se algum ainda está em pregão, conforme regra acima).
+- **Juros:** yield do Treasury de 10 anos e fato relevante de política monetária do pregão (Fed/BCE/BoJ/Copom), se houver.
+
+Regra inviolável: nunca invente cotação, nível de índice, nível técnico, fala de dirigente ou número. Sem confirmação, diga que não confirmou — nunca preencha um índice sem fonte com "estável" ou similar.
 
 ## Passo 4 — Bloco 2: WhatsApp
 Dentro de bloco de código, para o botão de copiar funcionar. Sem markdown de blog. Só *negrito* e _itálico_. Compacto mas denso: cada linha carrega um fato com número, sem leitura de impacto sobre hoje. Cotações sempre no FINAL.
@@ -47,18 +53,19 @@ Modelo:
 
 📊 Fechamento anterior — DD/MM
 
-🇧🇷 Ibovespa: [nível, variação, driver do pregão]
-🇺🇸 [Wall Street: fechamento e driver]
-🌏 [Ásia/Europa: fechamento ou, se ainda aberto, variação até agora — sinalizando isso]
-📈 [juros/Treasury/banco central: fato do pregão]
+🇧🇷 Ibovespa: XXX.XXX pts (X,XX%) — [driver do pregão]
+🇺🇸 S&P 500 X.XXX pts (X,XX%) | Dow Jones XX.XXX pts (X,XX%) | Nasdaq XX.XXX pts (X,XX%)
+🇪🇺 [índice europeu de referência]: X.XXX pts (X,XX%)
+🌏 Nikkei XXX.XXX pts (X,XX%) | Hang Seng XX.XXX pts (X,XX%) | CSI300/Xangai [nível] (X,XX%) — [sinalizar se algum ainda em pregão]
+📈 Treasury 10 anos: X,XX% | [fato de política monetária, se houve]
 
-💱 Cotações (fechamento/nível mais recente)
+💱 Câmbio (fechamento/nível mais recente)
 USD/BRL R$ X,XXXX
 EUR/BRL R$ X,XXXX
 JPY/BRL R$ 0,0XXX
 USD/JPY XXX,XX
 
-Cotação não confirmada entra como "não confirmada", nunca número sem fonte.
+Índice ou cotação não confirmada entra como "não confirmado", nunca número sem fonte.
 
 ## Saída
 Só texto na tela. Nunca gere arquivo.

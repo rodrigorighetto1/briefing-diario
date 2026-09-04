@@ -1,5 +1,5 @@
 ---
-description: Roda o MC (resumo factual do fechamento do dia anterior, sem leitura do dia atual)
+description: Roda o MC (fechamento da última sessão — moedas, bolsa e índices — sem leitura do dia atual)
 ---
 
 Execute a skill `mc` agora, exatamente como se eu tivesse escrito "rode o mc".

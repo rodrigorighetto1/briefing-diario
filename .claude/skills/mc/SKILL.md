@@ -1,6 +1,6 @@
 ---
 name: mc
-description: Resumo factual do fechamento da última sessão — principais moedas, bolsa (Ibovespa) e índices globais —, sem leitura do dia atual
+description: Resumo factual do fechamento da última sessão — principais moedas, bolsa (Ibovespa), índices globais e Treasury 10 anos —, sem leitura do dia atual
 ---
 
 # MC — Resumo do dia anterior
@@ -42,9 +42,9 @@ Cubra, sempre com **nível de fechamento (pontos) e variação percentual** — 
 - **Moedas:** USD/BRL, EUR/BRL, JPY/BRL, USD/JPY (regras de casas decimais do Passo 1).
 - **Bolsa (Brasil):** Ibovespa.
 - **Índices globais:** S&P 500, Dow Jones e Nasdaq (EUA); um índice europeu de referência citado pela fonte (Euro Stoxx 600, DAX ou FTSE 100); Nikkei 225, Hang Seng e CSI300/Xangai (Ásia — sinalizando se algum ainda está em pregão, conforme regra acima).
-- **Juros:** yield do Treasury de 10 anos e fato relevante de política monetária do pregão (Fed/BCE/BoJ/Copom), se houver.
+- **Treasury 10 anos** — bullet obrigatório todo dia, mesmo em dia parado: yield de fechamento e variação (em bps ou p.p.). Acrescente fato relevante de política monetária do pregão (Fed/BCE/BoJ/Copom), quando houver.
 
-Regra inviolável: nunca invente cotação, nível de índice, nível técnico, fala de dirigente ou número. Sem confirmação, diga que não confirmou — nunca preencha um índice sem fonte com "estável" ou similar.
+Regra inviolável: nunca invente cotação, nível de índice, yield, nível técnico, fala de dirigente ou número. Sem confirmação, diga que não confirmou — nunca preencha um índice ou o Treasury sem fonte com "estável" ou similar.
 
 ## Passo 4 — Bloco 2: WhatsApp
 Dentro de bloco de código, para o botão de copiar funcionar. Sem markdown de blog. Só *negrito* e _itálico_. Compacto mas denso: cada linha carrega um fato com número, sem leitura de impacto sobre hoje. Cotações sempre no FINAL.
@@ -57,7 +57,7 @@ Modelo:
 🇺🇸 S&P 500 X.XXX pts (X,XX%) | Dow Jones XX.XXX pts (X,XX%) | Nasdaq XX.XXX pts (X,XX%)
 🇪🇺 [índice europeu de referência]: X.XXX pts (X,XX%)
 🌏 Nikkei XXX.XXX pts (X,XX%) | Hang Seng XX.XXX pts (X,XX%) | CSI300/Xangai [nível] (X,XX%) — [sinalizar se algum ainda em pregão]
-📈 Treasury 10 anos: X,XX% | [fato de política monetária, se houve]
+📈 Treasury 10 anos: X,XX% (X bps) | [fato de política monetária, se houve]
 
 💱 Câmbio (fechamento/nível mais recente)
 USD/BRL R$ X,XXXX

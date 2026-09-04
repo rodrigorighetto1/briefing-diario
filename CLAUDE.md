@@ -47,7 +47,7 @@ Foco: leitura do dia **atual** — as notícias mais relevantes de hoje e o impa
 
 Cobertura: fechamento da **última sessão** das principais moedas (USD/BRL, EUR/BRL, JPY/BRL, USD/JPY), da bolsa brasileira (Ibovespa), dos principais índices globais (S&P 500, Dow Jones, Nasdaq, um índice europeu de referência, Nikkei 225, Hang Seng, CSI300/Xangai) e do yield do Treasury de 10 anos — bullet obrigatório todo dia, mesmo em dia parado. Sempre com nível/pontos (ou yield) e variação — nunca só a direção sem o número.
 
-Foco: resumo denso e factual de como fechou o pregão **anterior** e quais foram as notícias mais relevantes desse pregão. Sem interpretação do dia atual, sem leitura de impacto — é retrato do que já aconteceu, buscado nesta execução (nunca reciclado de conversa passada).
+Foco: resumo denso e factual de como fechou o pregão **anterior** — números e níveis — e, em seção própria, as **principais notícias que moveram esse pregão** (dado econômico, fala de dirigente, fato geopolítico). Sem interpretação do dia atual, sem leitura de impacto — é retrato do que já aconteceu, buscado nesta execução (nunca reciclado de conversa passada).
 
 **"Dia anterior" não é um corte único de calendário — cada praça tem seu próprio último fechamento, e os fusos não se alinham.** Trate assim:
 - **Wall Street (EUA):** use o fechamento do pregão anterior — a essa altura, já fechado há horas no horário de Brasília.

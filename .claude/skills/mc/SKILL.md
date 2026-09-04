@@ -1,6 +1,6 @@
 ---
 name: mc
-description: Resumo factual do fechamento da última sessão — principais moedas, bolsa (Ibovespa), índices globais e Treasury 10 anos —, sem leitura do dia atual
+description: Resumo factual do fechamento da última sessão — moedas, bolsa (Ibovespa), índices globais, Treasury 10 anos e as principais notícias que moveram o pregão —, sem leitura do dia atual
 ---
 
 # MC — Resumo do dia anterior
@@ -46,6 +46,8 @@ Cubra, sempre com **nível de fechamento (pontos) e variação percentual** — 
 
 Regra inviolável: nunca invente cotação, nível de índice, yield, nível técnico, fala de dirigente ou número. Sem confirmação, diga que não confirmou — nunca preencha um índice ou o Treasury sem fonte com "estável" ou similar.
 
+**Notícias que moveram o pregão** — seção própria, além dos números acima (não vale só o driver de uma linha embutido em cada ativo): liste as notícias mais relevantes do pregão anterior — evento, dado econômico, fala de dirigente de banco central, fato geopolítico — que efetivamente moveram bolsa, juros ou câmbio nesse pregão. Cada item é um fato factual buscado nesta execução, com o mecanismo básico (o que aconteceu → o que reagiu), **sem** avaliar o que isso significa para o dia atual. Cubra pelo menos EUA, e Brasil/câmbio quando houver fato relevante; inclua Europa/Ásia/BC estrangeiro quando a notícia tiver sido o driver do fechamento reportado acima. Se não achar notícia relevante para alguma praça, omita — não invente motivo genérico.
+
 ## Passo 4 — Bloco 2: WhatsApp
 Dentro de bloco de código, para o botão de copiar funcionar. Sem markdown de blog. Só *negrito* e _itálico_. Compacto mas denso: cada linha carrega um fato com número, sem leitura de impacto sobre hoje. Cotações sempre no FINAL.
 
@@ -58,6 +60,10 @@ Modelo:
 🇪🇺 [índice europeu de referência]: X.XXX pts (X,XX%)
 🌏 Nikkei XXX.XXX pts (X,XX%) | Hang Seng XX.XXX pts (X,XX%) | CSI300/Xangai [nível] (X,XX%) — [sinalizar se algum ainda em pregão]
 📈 Treasury 10 anos: X,XX% (X bps) | [fato de política monetária, se houve]
+
+📰 Notícias do pregão
+- [notícia 1 que moveu o mercado, factual]
+- [notícia 2, se houver]
 
 💱 Câmbio (fechamento/nível mais recente)
 USD/BRL R$ X,XXXX

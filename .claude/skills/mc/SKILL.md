@@ -35,7 +35,9 @@ Fontes primárias: InfoMoney, Investing.com (br.investing.com), UOL Economia, Bl
 Busque as matérias que cobrem o fechamento do pregão anterior (bolsas, juros, câmbio). Confirme que a matéria descreve o pregão que você está resumindo, não uma reciclada de outro dia.
 
 ## Passo 3 — Bloco 1: resumo do fechamento anterior
-Resumo denso e factual de como fecharam os principais mercados e quais foram as notícias mais relevantes do pregão anterior. **Sem interpretação, sem leitura de impacto sobre hoje** — é retrato do que já aconteceu, com números e fatos.
+Abra com 2 linhas fixas antes de qualquer conteúdo: (1) data/horário da execução em Brasília + "/mc"; (2) banner de sincronismo — se os dados coletados estão todos numa janela próxima entre si, diga isso; se algum está defasado em relação aos outros (ex.: minério com data anterior ao resto), diga isso explicitamente aqui, não só na linha individual.
+
+Resumo denso e factual de como fecharam os principais mercados e quais foram as notícias mais relevantes do pregão anterior. **Sem interpretação, sem leitura de impacto sobre hoje** — é retrato do que já aconteceu, com números e fatos. Se citar pesquisa de economistas sobre decisão de banco central, deixe claro que é proporção de entrevistados, não probabilidade implícita de mercado.
 
 **"Dia anterior" não é um corte único de calendário — cada praça tem seu próprio último fechamento, e os fusos não se alinham:**
 - **Wall Street (EUA):** fechamento do pregão anterior — já fechado há horas no horário de Brasília.

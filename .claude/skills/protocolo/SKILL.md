@@ -28,7 +28,7 @@ Anote o timestamp de **cada** cotação individualmente — não um horário ún
 Colete petróleo (Brent e WTI), minério de ferro e ouro — sempre, mesmo em dia parado, dado o peso de Petrobras e Vale no Ibovespa. Mesma disciplina de fonte do Passo 1: número extraído de matéria do dia ou tela ao vivo via Playwright, nunca estimado. Preços de commodities costumam fechar em horários diferentes entre si (minério de ferro fecha antes do petróleo, por exemplo) — sinalize quando os preços não estão sincronizados no mesmo horário em vez de apresentá-los como se fossem do mesmo instante.
 
 ## Passo 1.6 — Agenda econômica do dia
-Busque o calendário econômico do dia (Investing.com/calendário, InfoMoney) e liste eventos com horário (Brasília) já conhecidos no momento da execução — decisões de banco central, divulgação de indicadores, discursos de dirigentes. Inclua consenso/expectativa apenas quando a fonte fornecer o número; se não fornecer, liste só evento e horário — nunca invente expectativa de mercado.
+Busque o calendário econômico do dia (Investing.com/calendário, InfoMoney) e liste eventos com horário (Brasília) já conhecidos no momento da execução — decisões de banco central, divulgação de indicadores, discursos de dirigentes. Cada evento leva 4 campos próprios: **horário, evento, consenso, valor anterior**. Consenso fica "não disponível" se a fonte não fornecer — nunca estimado. Se citar pesquisa de economistas (ex.: Reuters) sobre decisão de BC, deixe claro que é proporção de entrevistados, não probabilidade implícita de mercado — são coisas diferentes, não conflate.
 
 ## Passo 2 — Notícias
 Fontes primárias: InfoMoney, Investing.com (br.investing.com), UOL Economia, Bloomberg/Bloomberg Línea, Forbes Brasil. Investing.com é a fonte primária definida para números/cotações; as demais primárias servem para contexto.
@@ -41,6 +41,10 @@ Dentro do InfoMoney, priorize os live-blogs, que atualizam durante o pregão:
 Confirme sempre se o texto descreve o pregão de HOJE — matéria com título "hoje" frequentemente recicla números de ontem.
 
 ## Passo 3 — Bloco 1: Morning Call
+Abra com 2 linhas fixas antes de qualquer conteúdo: (1) data/horário da execução em Brasília + "/protocolo"; (2) banner de sincronismo — se as cotações/dados coletados estão todos numa janela próxima entre si, diga isso; se algum dado está defasado em relação aos outros, diga isso explicitamente aqui, não só na linha individual.
+
+Depois do banner, um resumo executivo de 2-3 linhas ("o que importa agora") — a síntese que orienta a leitura, sem repetir número, antes do corpo do texto.
+
 Escreva como analista sênior de mercado. Não liste notícia solta: explique o mecanismo de transmissão. Para cada fato relevante, com base factual:
 - qual ativo é atingido primeiro e por qual canal (juros, câmbio, commodity, fluxo, prêmio de risco)
 - qual o efeito de segunda ordem sobre o Brasil (Ibovespa, curva de juros, real)

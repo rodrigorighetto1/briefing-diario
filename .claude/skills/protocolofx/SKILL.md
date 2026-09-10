@@ -27,7 +27,7 @@ Se EUR/BRL ou JPY/BRL não tiverem fonte direta confiável, calcule por cruzamen
 Anote o timestamp de **cada** cotação individualmente — não um horário único de "consulta geral". Se uma perna estiver mais desatualizada que as outras (ex.: USD/BRL de matéria de ontem enquanto DXY tem tick de minutos atrás), isso aparece explícito ao lado do número no output. Falha em confirmar vira erro reportado, não estimativa.
 
 ## Passo 1.5 — Agenda econômica relevante ao câmbio
-Busque o calendário econômico do dia (Investing.com/calendário, InfoMoney) e liste, com horário (Brasília), os eventos ainda por vir que podem mover câmbio: decisões de banco central (Fed/BCE/BoJ/BCB), payroll, CPI/PPI, PMIs, discursos de dirigentes. Inclua consenso/expectativa só quando a fonte fornecer o número — nunca invente expectativa de mercado.
+Busque o calendário econômico do dia (Investing.com/calendário, InfoMoney) e liste os eventos ainda por vir que podem mover câmbio: decisões de banco central (Fed/BCE/BoJ/BCB), payroll, CPI/PPI, PMIs, discursos de dirigentes. Cada evento leva 4 campos próprios: **horário, evento, consenso, valor anterior**. Consenso fica "não disponível" se a fonte não fornecer — nunca estimado. Se citar pesquisa de economistas sobre decisão de BC, deixe claro que é proporção de entrevistados, não probabilidade implícita de mercado — são coisas diferentes, não conflate.
 
 ## Passo 2 — Notícias e dados de câmbio
 Fontes primárias: InfoMoney, Investing.com, UOL Economia, Bloomberg/Bloomberg Línea, Forbes Brasil. Investing.com é a fonte primária definida para números/cotações; as demais primárias servem para contexto.
@@ -42,6 +42,10 @@ Priorize páginas que atualizam ao vivo. Colete:
 - níveis técnicos CITADOS pelas fontes (nunca invente nível)
 
 ## Passo 3 — Bloco 1: leitura de analista sênior de FX
+Abra com 2 linhas fixas antes de qualquer conteúdo: (1) data/horário da execução em Brasília + "/protocolofx"; (2) banner de sincronismo — se as cotações coletadas estão todas numa janela próxima entre si, diga isso; se alguma perna está defasada em relação às outras, diga isso explicitamente aqui, não só na linha individual.
+
+Depois do banner, um resumo executivo de 2-3 linhas ("o que importa agora em câmbio") — a síntese que orienta a leitura, sem repetir número, antes do corpo do texto.
+
 USD/BRL é bullet obrigatório TODO dia, mesmo parado — se não houve movimento relevante, diga isso.
 Cubra, cada um com o mecanismo por trás:
 - USD/BRL: driver do dia, fluxo, componente doméstico (fiscal, eleitoral) vs externo

@@ -39,9 +39,13 @@ Quando EUR/BRL ou JPY/BRL não tiverem fonte confiável direta, calcule por cruz
 
 **Timestamp por cotação (obrigatório):** cada cotação carrega o horário da própria fonte, individualmente — não um horário único de "consulta geral" no topo do relatório. Se uma perna está mais desatualizada que as outras (ex: USD/BRL só tem matéria de ontem enquanto EUR/BRL tem tick de minutos atrás), isso aparece explícito ao lado do número, não em rodapé genérico. Nunca misture cotações de horários muito diferentes sem sinalizar — isso é uma forma de inventar sincronismo que não existe.
 
+## Pesquisa de economistas ≠ probabilidade de mercado
+
+Quando citar pesquisa de economistas (ex: Reuters, Bloomberg) sobre decisão de banco central, deixe explícito que é **proporção de entrevistados**, não probabilidade implícita de mercado (fed funds futures, swaps de juros). São números diferentes e não devem ser apresentados como se fossem a mesma coisa. Se só tiver um dos dois, diga qual é.
+
 ## Fluxo Geral (comando: "rode o protocolo" / "/protocolo")
 
-Cobertura: bolsas mundiais (EUA/Europa/Ásia/Ibovespa), juros e política monetária (Fed/BCE/BoJ/Copom), câmbio (USD/BRL, EUR/BRL, JPY/BRL sempre), commodities relevantes ao Brasil (petróleo Brent/WTI, minério de ferro, ouro — bullet fixo, dado o peso de Petrobras e Vale no Ibovespa), agenda econômica do dia (eventos e horários já conhecidos no momento da execução — sem inventar consenso/expectativa quando a fonte não fornecer).
+Cobertura: bolsas mundiais (EUA/Europa/Ásia/Ibovespa), juros e política monetária (Fed/BCE/BoJ/Copom), câmbio (USD/BRL, EUR/BRL, JPY/BRL sempre), commodities relevantes ao Brasil (petróleo Brent/WTI, minério de ferro, ouro — bullet fixo, dado o peso de Petrobras e Vale no Ibovespa), agenda econômica do dia (evento, horário, **consenso** e **valor anterior** — cada um como campo próprio, não misturados em uma frase; consenso fica em branco/"não disponível" se a fonte não fornecer, nunca estimado).
 
 Foco: leitura do dia **atual** — as notícias mais relevantes de hoje e o impacto provável, o que está movendo bolsas, curva de juros e câmbio agora, e por quê. **Não inclui** resumo do fechamento do dia anterior — esse escopo é do fluxo MC. Pode citar o fechamento anterior como contexto pontual dentro do texto, mas o foco é hoje.
 
@@ -67,13 +71,19 @@ Cobertura mais aprofundada, só câmbio:
 - Diferencial de juros / yield do Treasury de 10 anos.
 - Falas de dirigentes de banco central relevantes ao câmbio.
 - Níveis técnicos citados pelas fontes (suporte/resistência mencionados nas matérias, não inventados).
-- Agenda econômica do dia relevante a câmbio (decisões de BC, payroll, CPI/PPI, PMIs — evento e horário; sem inventar número de consenso/expectativa quando a fonte não fornecer).
+- Agenda econômica do dia relevante a câmbio (decisões de BC, payroll, CPI/PPI, PMIs — evento, horário, **consenso** e **valor anterior** como campos próprios; consenso em branco/"não disponível" se a fonte não fornecer, nunca estimado).
 
 ## Formato de saída (os três fluxos)
 
 Toda execução gera **dois blocos**, nessa ordem, direto na tela — nunca gere arquivo .docx ou outro documento:
 
-**Bloco 1 — Morning Call.** Pode usar Markdown normalmente (títulos, negrito, listas) — é para leitura na tela. Conteúdo varia por comando:
+**Bloco 1 — Morning Call.** Pode usar Markdown normalmente (títulos, negrito, listas) — é para leitura na tela. Sempre abre com duas linhas fixas antes de qualquer conteúdo:
+1. Data e horário da execução (Brasília) + fluxo rodado.
+2. Banner de sincronismo: se todas as cotações/dados coletados estão dentro de uma janela curta e próxima (~minutos) entre si, diga isso; se há dado defasado (ex: minério de ontem, matéria reciclada) misturado com dado ao vivo, diga isso explicitamente aqui — não só na linha individual do dado.
+
+Depois do banner, em /protocolo e /protocolofx (não em /mc, que já é puramente factual): um resumo executivo de 2-3 linhas ("o que importa agora") antes do corpo do texto — a leitura mais importante do dia, sem repetir número, só a síntese que orienta o resto da leitura.
+
+Conteúdo do corpo varia por comando:
 
 - **/mc:** só o resumo factual do fechamento do dia anterior, nas regras de fuso descritas no Fluxo MC acima. Sem interpretação, sem leitura do dia atual.
 - **/protocolo e /protocolofx:** só a leitura do dia atual — o que deve mover o mercado hoje e por quê, com impactos prováveis, lastreada exclusivamente nos fatos levantados nesta execução. Não é um resumo do fechamento anterior; esse bloco é interpretação do analista sênior.

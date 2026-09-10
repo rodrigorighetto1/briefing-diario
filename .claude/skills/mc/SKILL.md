@@ -26,6 +26,8 @@ Se EUR/BRL ou JPY/BRL não tiverem fonte direta confiável, calcule por cruzamen
 
 Anote o timestamp de **cada** cotação e de **cada** commodity individualmente — não um horário único de "consulta geral". Se uma perna estiver mais desatualizada que as outras, isso aparece explícito ao lado do número, não escondido em rodapé.
 
+**Cache da ferramenta de busca:** a ferramenta de leitura de página cacheia por ~15 min por URL. Se reconsultar a mesma URL nesta sessão e o timestamp vier idêntico, segundo a segundo, ao de uma leitura anterior, isso é cache, não mercado parado — force bypass (parâmetro variável na URL, ex: `?cb=<algo único>`) e refaça antes de confiar no número.
+
 ## Passo 1.5 — Commodities (bullet fixo)
 Colete petróleo (Brent e WTI), minério de ferro e ouro do fechamento/nível mais recente — sempre, mesmo em dia parado, dado o peso de Petrobras e Vale no Ibovespa. Mesma disciplina de fonte do Passo 1. Preços de commodities costumam fechar em horários diferentes entre si — sinalize quando não estão sincronizados no mesmo horário.
 

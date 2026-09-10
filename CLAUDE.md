@@ -39,6 +39,8 @@ Quando EUR/BRL ou JPY/BRL não tiverem fonte confiável direta, calcule por cruz
 
 **Timestamp por cotação (obrigatório):** cada cotação carrega o horário da própria fonte, individualmente — não um horário único de "consulta geral" no topo do relatório. Se uma perna está mais desatualizada que as outras (ex: USD/BRL só tem matéria de ontem enquanto EUR/BRL tem tick de minutos atrás), isso aparece explícito ao lado do número, não em rodapé genérico. Nunca misture cotações de horários muito diferentes sem sinalizar — isso é uma forma de inventar sincronismo que não existe.
 
+**Cache da ferramenta de busca:** a ferramenta usada para ler páginas mantém cache interno por ~15 minutos por URL. Se a mesma URL já foi consultada nesta sessão (nesta execução ou numa anterior recente), o resultado pode vir cacheado mesmo parecendo "tempo real" — um timestamp idêntico, segundo a segundo, ao de uma consulta anterior é o sinal de alerta. Nesse caso, force um bypass de cache (acrescente um parâmetro variável à URL, ex: `?cb=<algo único>`) e refaça a leitura antes de confiar no número.
+
 ## Pesquisa de economistas ≠ probabilidade de mercado
 
 Quando citar pesquisa de economistas (ex: Reuters, Bloomberg) sobre decisão de banco central, deixe explícito que é **proporção de entrevistados**, não probabilidade implícita de mercado (fed funds futures, swaps de juros). São números diferentes e não devem ser apresentados como se fossem a mesma coisa. Se só tiver um dos dois, diga qual é.

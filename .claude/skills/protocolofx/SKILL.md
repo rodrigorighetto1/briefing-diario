@@ -26,6 +26,8 @@ Se EUR/BRL ou JPY/BRL não tiverem fonte direta confiável, calcule por cruzamen
 
 Anote o timestamp de **cada** cotação individualmente — não um horário único de "consulta geral". Se uma perna estiver mais desatualizada que as outras (ex.: USD/BRL de matéria de ontem enquanto DXY tem tick de minutos atrás), isso aparece explícito ao lado do número no output. Falha em confirmar vira erro reportado, não estimativa.
 
+**Cache da ferramenta de busca:** a ferramenta de leitura de página cacheia por ~15 min por URL. Se reconsultar a mesma URL nesta sessão e o timestamp vier idêntico, segundo a segundo, ao de uma leitura anterior, isso é cache, não mercado parado — force bypass (parâmetro variável na URL, ex: `?cb=<algo único>`) e refaça antes de confiar no número.
+
 ## Passo 1.5 — Agenda econômica relevante ao câmbio
 Busque o calendário econômico do dia (Investing.com/calendário, InfoMoney) e liste os eventos ainda por vir que podem mover câmbio: decisões de banco central (Fed/BCE/BoJ/BCB), payroll, CPI/PPI, PMIs, discursos de dirigentes. Cada evento leva 4 campos próprios: **horário, evento, consenso, valor anterior**. Consenso fica "não disponível" se a fonte não fornecer — nunca estimado. Se citar pesquisa de economistas sobre decisão de BC, deixe claro que é proporção de entrevistados, não probabilidade implícita de mercado — são coisas diferentes, não conflate.
 

@@ -24,6 +24,8 @@ Se EUR/BRL ou JPY/BRL não tiverem fonte direta confiável, calcule por cruzamen
 
 Anote o timestamp de **cada** cotação individualmente — não um horário único de "consulta geral". Se uma perna estiver mais desatualizada que as outras (ex.: USD/BRL só com matéria de ontem enquanto EUR/BRL tem tick de minutos atrás), isso aparece explícito ao lado do número no output, não escondido em rodapé. Falha em confirmar vira erro reportado e cotação marcada como não confirmada, nunca estimativa silenciosa.
 
+**Cache da ferramenta de busca:** a ferramenta de leitura de página cacheia por ~15 min por URL. Se reconsultar a mesma URL nesta sessão e o timestamp vier idêntico, segundo a segundo, ao de uma leitura anterior, isso é cache, não mercado parado — force bypass (parâmetro variável na URL, ex: `?cb=<algo único>`) e refaça antes de confiar no número.
+
 ## Passo 1.5 — Commodities (bullet fixo)
 Colete petróleo (Brent e WTI), minério de ferro e ouro — sempre, mesmo em dia parado, dado o peso de Petrobras e Vale no Ibovespa. Mesma disciplina de fonte do Passo 1: número extraído de matéria do dia ou tela ao vivo via Playwright, nunca estimado. Preços de commodities costumam fechar em horários diferentes entre si (minério de ferro fecha antes do petróleo, por exemplo) — sinalize quando os preços não estão sincronizados no mesmo horário em vez de apresentá-los como se fossem do mesmo instante.
 

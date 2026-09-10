@@ -24,7 +24,10 @@ Colete: USD/BRL, EUR/BRL, EUR/USD, JPY/BRL, USD/JPY, DXY.
 
 Se EUR/BRL ou JPY/BRL não tiverem fonte direta confiável, calcule por cruzamento: EUR/BRL = USD/BRL × EUR/USD; JPY/BRL = USD/BRL ÷ USD/JPY. Sinalize explicitamente se alguma perna do cruzamento vier de fonte não confiável.
 
-Anote o timestamp de cada fonte usada. Falha em confirmar vira erro reportado, não estimativa.
+Anote o timestamp de **cada** cotação individualmente — não um horário único de "consulta geral". Se uma perna estiver mais desatualizada que as outras (ex.: USD/BRL de matéria de ontem enquanto DXY tem tick de minutos atrás), isso aparece explícito ao lado do número no output. Falha em confirmar vira erro reportado, não estimativa.
+
+## Passo 1.5 — Agenda econômica relevante ao câmbio
+Busque o calendário econômico do dia (Investing.com/calendário, InfoMoney) e liste, com horário (Brasília), os eventos ainda por vir que podem mover câmbio: decisões de banco central (Fed/BCE/BoJ/BCB), payroll, CPI/PPI, PMIs, discursos de dirigentes. Inclua consenso/expectativa só quando a fonte fornecer o número — nunca invente expectativa de mercado.
 
 ## Passo 2 — Notícias e dados de câmbio
 Fontes primárias: InfoMoney, Investing.com, UOL Economia, Bloomberg/Bloomberg Línea, Forbes Brasil. Investing.com é a fonte primária definida para números/cotações; as demais primárias servem para contexto.
@@ -46,6 +49,7 @@ Cubra, cada um com o mecanismo por trás:
 - JPY/BRL e USD/JPY: carry trade, política do BoJ, distância do nível de intervenção
 - DXY: direção do dólar global e se o real segue ou descola
 - Diferencial de juros: Selic vs Fed, Treasury 10 anos, efeito no carry
+- Agenda (Passo 1.5): eventos ainda por vir no dia e o que o mercado deve reagir a eles, com base no que a fonte disse
 Separe sempre movimento global do dólar de risco Brasil. Nunca invente número, nível ou fala.
 
 ## Passo 4 — Bloco 2: WhatsApp
@@ -62,14 +66,15 @@ Modelo:
 🏦 [diferencial de juros / Treasury 10a]
 🗣️ [fala de banco central, se houve]
 📐 [níveis técnicos citados pelas fontes]
+📅 [próximos eventos da agenda relevantes ao câmbio, com horário]
 
-💱 Cotações (HHhMM)
-USD/BRL R$ X,XXXX
-EUR/BRL R$ X,XXXX
-JPY/BRL R$ 0,0XXX
-USD/JPY XXX,XX
-EUR/USD X,XXXX
-DXY XX,XX
+💱 Cotações (cada uma com seu horário de fonte, HHhMM)
+USD/BRL R$ X,XXXX (HHhMM)
+EUR/BRL R$ X,XXXX (HHhMM)
+JPY/BRL R$ 0,0XXX (HHhMM)
+USD/JPY XXX,XX (HHhMM)
+EUR/USD X,XXXX (HHhMM)
+DXY XX,XX (HHhMM)
 
 _Leitura: [uma frase — o risco ou gatilho a vigiar]_
 

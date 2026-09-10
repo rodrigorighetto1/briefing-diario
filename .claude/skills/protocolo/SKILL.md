@@ -22,7 +22,13 @@ Colete: USD/BRL, EUR/BRL, JPY/BRL, USD/JPY.
 
 Se EUR/BRL ou JPY/BRL não tiverem fonte direta confiável, calcule por cruzamento: EUR/BRL = USD/BRL × EUR/USD; JPY/BRL = USD/BRL ÷ USD/JPY. Sinalize explicitamente se alguma perna do cruzamento vier de fonte não confiável.
 
-Anote o timestamp de cada fonte usada. Falha em confirmar vira erro reportado e cotação marcada como não confirmada, nunca estimativa silenciosa.
+Anote o timestamp de **cada** cotação individualmente — não um horário único de "consulta geral". Se uma perna estiver mais desatualizada que as outras (ex.: USD/BRL só com matéria de ontem enquanto EUR/BRL tem tick de minutos atrás), isso aparece explícito ao lado do número no output, não escondido em rodapé. Falha em confirmar vira erro reportado e cotação marcada como não confirmada, nunca estimativa silenciosa.
+
+## Passo 1.5 — Commodities (bullet fixo)
+Colete petróleo (Brent e WTI), minério de ferro e ouro — sempre, mesmo em dia parado, dado o peso de Petrobras e Vale no Ibovespa. Mesma disciplina de fonte do Passo 1: número extraído de matéria do dia ou tela ao vivo via Playwright, nunca estimado. Preços de commodities costumam fechar em horários diferentes entre si (minério de ferro fecha antes do petróleo, por exemplo) — sinalize quando os preços não estão sincronizados no mesmo horário em vez de apresentá-los como se fossem do mesmo instante.
+
+## Passo 1.6 — Agenda econômica do dia
+Busque o calendário econômico do dia (Investing.com/calendário, InfoMoney) e liste eventos com horário (Brasília) já conhecidos no momento da execução — decisões de banco central, divulgação de indicadores, discursos de dirigentes. Inclua consenso/expectativa apenas quando a fonte fornecer o número; se não fornecer, liste só evento e horário — nunca invente expectativa de mercado.
 
 ## Passo 2 — Notícias
 Fontes primárias: InfoMoney, Investing.com (br.investing.com), UOL Economia, Bloomberg/Bloomberg Línea, Forbes Brasil. Investing.com é a fonte primária definida para números/cotações; as demais primárias servem para contexto.
@@ -39,7 +45,7 @@ Escreva como analista sênior de mercado. Não liste notícia solta: explique o 
 - qual ativo é atingido primeiro e por qual canal (juros, câmbio, commodity, fluxo, prêmio de risco)
 - qual o efeito de segunda ordem sobre o Brasil (Ibovespa, curva de juros, real)
 - se o movimento é técnico ou fundamental; quando analistas citados na fonte disserem que é técnico, diga
-Cubra: bolsas (EUA, Europa, Ásia, Ibovespa), juros e política monetária (Fed, BCE, BoJ, Copom), câmbio, commodities que movam mercado.
+Cubra: bolsas (EUA, Europa, Ásia, Ibovespa), juros e política monetária (Fed, BCE, BoJ, Copom), câmbio, commodities (Passo 1.5) e agenda econômica do dia (Passo 1.6) — cite os eventos que ainda vão sair e o que o mercado deve reagir a eles, com base no que a fonte disse, não em palpite.
 Regra inviolável: nunca invente cotação, nível técnico, fala de dirigente ou número. Sem confirmação, diga que não confirmou.
 
 ## Passo 4 — Bloco 2: WhatsApp
@@ -53,13 +59,14 @@ Modelo:
 🇺🇸 [Wall Street ou macro americano]
 🌏 [Ásia/Europa ou geopolítica]
 📈 [juros/Treasury/banco central]
-🛢️ [commodity, se relevante]
+🛢️ Brent US$ XX,XX | WTI US$ XX,XX | Minério US$ XX,XX/t | Ouro US$ X.XXX
+📅 [próximos eventos da agenda relevantes ao dia, com horário]
 
-💱 Cotações (HHhMM)
-USD/BRL R$ X,XXXX
-EUR/BRL R$ X,XXXX
-JPY/BRL R$ 0,0XXX
-USD/JPY XXX,XX
+💱 Cotações (cada uma com seu horário de fonte, HHhMM)
+USD/BRL R$ X,XXXX (HHhMM)
+EUR/BRL R$ X,XXXX (HHhMM)
+JPY/BRL R$ 0,0XXX (HHhMM)
+USD/JPY XXX,XX (HHhMM)
 
 _Leitura: [uma frase — o que vigiar hoje]_
 

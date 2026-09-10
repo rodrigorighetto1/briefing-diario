@@ -24,6 +24,11 @@ Colete: USD/BRL, EUR/BRL, JPY/BRL, USD/JPY.
 
 Se EUR/BRL ou JPY/BRL não tiverem fonte direta confiável, calcule por cruzamento: EUR/BRL = USD/BRL × EUR/USD; JPY/BRL = USD/BRL ÷ USD/JPY. Sinalize explicitamente se alguma perna do cruzamento vier de fonte não confiável.
 
+Anote o timestamp de **cada** cotação e de **cada** commodity individualmente — não um horário único de "consulta geral". Se uma perna estiver mais desatualizada que as outras, isso aparece explícito ao lado do número, não escondido em rodapé.
+
+## Passo 1.5 — Commodities (bullet fixo)
+Colete petróleo (Brent e WTI), minério de ferro e ouro do fechamento/nível mais recente — sempre, mesmo em dia parado, dado o peso de Petrobras e Vale no Ibovespa. Mesma disciplina de fonte do Passo 1. Preços de commodities costumam fechar em horários diferentes entre si — sinalize quando não estão sincronizados no mesmo horário.
+
 ## Passo 2 — Notícias
 Fontes primárias: InfoMoney, Investing.com (br.investing.com), UOL Economia, Bloomberg/Bloomberg Línea, Forbes Brasil. Complementares (quando as primárias não bastarem): Reuters, Valor Econômico, Estadão Economia, CNN Money, MarketWatch, CNBC. Bloomberg trava fetch direto por robots.txt — use-o só via busca/snippet.
 
@@ -43,6 +48,7 @@ Cubra, sempre com **nível de fechamento (pontos) e variação percentual** — 
 - **Bolsa (Brasil):** Ibovespa.
 - **Índices globais:** S&P 500, Dow Jones e Nasdaq (EUA); um índice europeu de referência citado pela fonte (Euro Stoxx 600, DAX ou FTSE 100); Nikkei 225, Hang Seng e CSI300/Xangai (Ásia — sinalizando se algum ainda está em pregão, conforme regra acima).
 - **Treasury 10 anos** — bullet obrigatório todo dia, mesmo em dia parado: yield de fechamento e variação (em bps ou p.p.). Acrescente fato relevante de política monetária do pregão (Fed/BCE/BoJ/Copom), quando houver.
+- **Commodities** (Passo 1.5) — bullet obrigatório todo dia: Brent, WTI, minério de ferro, ouro, com preço e variação.
 
 Regra inviolável: nunca invente cotação, nível de índice, yield, nível técnico, fala de dirigente ou número. Sem confirmação, diga que não confirmou — nunca preencha um índice ou o Treasury sem fonte com "estável" ou similar.
 
@@ -60,16 +66,17 @@ Modelo:
 🇪🇺 [índice europeu de referência]: X.XXX pts (X,XX%)
 🌏 Nikkei XXX.XXX pts (X,XX%) | Hang Seng XX.XXX pts (X,XX%) | CSI300/Xangai [nível] (X,XX%) — [sinalizar se algum ainda em pregão]
 📈 Treasury 10 anos: X,XX% (X bps) | [fato de política monetária, se houve]
+🛢️ Brent US$ XX,XX (X,XX%) | WTI US$ XX,XX (X,XX%) | Minério US$ XX,XX/t (X,XX%) | Ouro US$ X.XXX (X,XX%)
 
 📰 Notícias do pregão
 - [notícia 1 que moveu o mercado, factual]
 - [notícia 2, se houver]
 
-💱 Câmbio (fechamento/nível mais recente)
-USD/BRL R$ X,XXXX
-EUR/BRL R$ X,XXXX
-JPY/BRL R$ 0,0XXX
-USD/JPY XXX,XX
+💱 Câmbio (cada um com seu horário de fonte, HHhMM)
+USD/BRL R$ X,XXXX (HHhMM)
+EUR/BRL R$ X,XXXX (HHhMM)
+JPY/BRL R$ 0,0XXX (HHhMM)
+USD/JPY XXX,XX (HHhMM)
 
 Índice ou cotação não confirmada entra como "não confirmado", nunca número sem fonte.
 

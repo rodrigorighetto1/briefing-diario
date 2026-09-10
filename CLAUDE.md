@@ -37,15 +37,17 @@ Quando EUR/BRL ou JPY/BRL não tiverem fonte confiável direta, calcule por cruz
 
 **Regra do JPY/BRL:** sempre por 1 (uma) unidade de iene, nunca por lote de 100, com 4 casas decimais (ex: R$ 0,0328). Se a fonte só fornecer por lote de 100, divida por 100.
 
+**Timestamp por cotação (obrigatório):** cada cotação carrega o horário da própria fonte, individualmente — não um horário único de "consulta geral" no topo do relatório. Se uma perna está mais desatualizada que as outras (ex: USD/BRL só tem matéria de ontem enquanto EUR/BRL tem tick de minutos atrás), isso aparece explícito ao lado do número, não em rodapé genérico. Nunca misture cotações de horários muito diferentes sem sinalizar — isso é uma forma de inventar sincronismo que não existe.
+
 ## Fluxo Geral (comando: "rode o protocolo" / "/protocolo")
 
-Cobertura: bolsas mundiais (EUA/Europa/Ásia/Ibovespa), juros e política monetária (Fed/BCE/BoJ/Copom), câmbio (USD/BRL, EUR/BRL, JPY/BRL sempre).
+Cobertura: bolsas mundiais (EUA/Europa/Ásia/Ibovespa), juros e política monetária (Fed/BCE/BoJ/Copom), câmbio (USD/BRL, EUR/BRL, JPY/BRL sempre), commodities relevantes ao Brasil (petróleo Brent/WTI, minério de ferro, ouro — bullet fixo, dado o peso de Petrobras e Vale no Ibovespa), agenda econômica do dia (eventos e horários já conhecidos no momento da execução — sem inventar consenso/expectativa quando a fonte não fornecer).
 
 Foco: leitura do dia **atual** — as notícias mais relevantes de hoje e o impacto provável, o que está movendo bolsas, curva de juros e câmbio agora, e por quê. **Não inclui** resumo do fechamento do dia anterior — esse escopo é do fluxo MC. Pode citar o fechamento anterior como contexto pontual dentro do texto, mas o foco é hoje.
 
 ## Fluxo MC — Morning Call (comando: "rode o mc" / "/mc")
 
-Cobertura: fechamento da **última sessão** das principais moedas (USD/BRL, EUR/BRL, JPY/BRL, USD/JPY), da bolsa brasileira (Ibovespa), dos principais índices globais (S&P 500, Dow Jones, Nasdaq, um índice europeu de referência, Nikkei 225, Hang Seng, CSI300/Xangai) e do yield do Treasury de 10 anos — bullet obrigatório todo dia, mesmo em dia parado. Sempre com nível/pontos (ou yield) e variação — nunca só a direção sem o número.
+Cobertura: fechamento da **última sessão** das principais moedas (USD/BRL, EUR/BRL, JPY/BRL, USD/JPY), da bolsa brasileira (Ibovespa), dos principais índices globais (S&P 500, Dow Jones, Nasdaq, um índice europeu de referência, Nikkei 225, Hang Seng, CSI300/Xangai), do yield do Treasury de 10 anos, e das principais commodities (petróleo Brent/WTI, minério de ferro, ouro) — todos bullets obrigatórios todo dia, mesmo em dia parado. Sempre com nível/pontos (ou yield/preço) e variação — nunca só a direção sem o número. Preços de commodities frequentemente vêm de fontes com horário de fechamento diferente entre si (ex: minério de ferro fecha antes do petróleo) — sinalize quando os preços não estão sincronizados no mesmo horário, em vez de apresentá-los como se fossem do mesmo instante.
 
 Foco: resumo denso e factual de como fechou o pregão **anterior** — números e níveis — e, em seção própria, as **principais notícias que moveram esse pregão** (dado econômico, fala de dirigente, fato geopolítico). Sem interpretação do dia atual, sem leitura de impacto — é retrato do que já aconteceu, buscado nesta execução (nunca reciclado de conversa passada).
 
@@ -65,6 +67,7 @@ Cobertura mais aprofundada, só câmbio:
 - Diferencial de juros / yield do Treasury de 10 anos.
 - Falas de dirigentes de banco central relevantes ao câmbio.
 - Níveis técnicos citados pelas fontes (suporte/resistência mencionados nas matérias, não inventados).
+- Agenda econômica do dia relevante a câmbio (decisões de BC, payroll, CPI/PPI, PMIs — evento e horário; sem inventar número de consenso/expectativa quando a fonte não fornecer).
 
 ## Formato de saída (os três fluxos)
 
